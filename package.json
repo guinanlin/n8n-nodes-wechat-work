@@ -42,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "@types/node": "^22.13.1",
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.56.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",
@@ -51,5 +52,8 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "glob": "^11.0.1"
   }
 }

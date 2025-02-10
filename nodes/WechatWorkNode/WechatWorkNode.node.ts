@@ -7,13 +7,15 @@ import {
 	INodeTypeDescription,
 	NodeOperationError,
 } from 'n8n-workflow';
-import BuildUtils from '../utils/buildUtils';
-import MessageResource from './resource/MessageResource';
 import { ICredentialsDecrypted, ICredentialTestFunctions } from 'n8n-workflow/dist/Interfaces';
+import ResourceBuilder from "../help/builder/resourceBuilder";
+import ModuleLoadUtils from "../help/utils/moduleLoadUtils";
 
-const resources = [new MessageResource()];
-
-console.log('properties', JSON.stringify(BuildUtils.buildResources(resources)));
+const resourceBuilder = new ResourceBuilder();
+const resources = ModuleLoadUtils.loadModules(__dirname, "resource/*.ts");
+resources.forEach((resource) => {
+	resource.init(resourceBuilder);
+});
 
 export class WechatWorkNode implements INodeType {
 	description: INodeTypeDescription = {
@@ -34,7 +36,7 @@ export class WechatWorkNode implements INodeType {
 				testedBy: 'accessTokenTest',
 			},
 		],
-		properties: [...BuildUtils.buildResources(resources)],
+		properties: resourceBuilder.build(),
 	};
 
 	methods = {
@@ -73,7 +75,7 @@ export class WechatWorkNode implements INodeType {
 		const resource = this.getNodeParameter('resource', 0);
 		const operation = this.getNodeParameter('operation', 0);
 
-		const callFunc = BuildUtils.buildCall(resources, resource, operation);
+		const callFunc = resourceBuilder.getCall(resource, operation);
 
 		if (!callFunc) {
 			throw new NodeOperationError(this.getNode(), '未实现方法: ' + resource + '.' + operation);

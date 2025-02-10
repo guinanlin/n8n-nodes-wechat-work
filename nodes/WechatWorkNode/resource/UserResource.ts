@@ -1,18 +1,18 @@
 import ResourceBuilder from '../../help/builder/resourceBuilder';
 import ModuleLoadUtils from '../../help/utils/moduleLoadUtils';
 
-class MessageResource {
+class UserResource {
 	static init(resourceBuilder: ResourceBuilder) {
 		resourceBuilder.addResource({
-			name: '消息推送',
-			value: 'message',
+			name: '用户管理',
+			value: 'user',
 		});
 
-		const modules = ModuleLoadUtils.loadModules(__dirname, 'message/*.js');
+		const modules = ModuleLoadUtils.loadModules(__dirname, 'user/*.js');
 		for (const module of modules) {
 			module.init(resourceBuilder);
 		}
 	}
 }
 
-export default MessageResource;
+export default UserResource;

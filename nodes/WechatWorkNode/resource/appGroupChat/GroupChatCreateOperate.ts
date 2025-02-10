@@ -1,0 +1,71 @@
+import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
+import ResourceBuilder from '../../../help/builder/resourceBuilder';
+import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
+
+class GroupChatCreateOperate {
+	static init(resourceBuilder: ResourceBuilder) {
+		resourceBuilder.addOperate(
+			'appGroupChat',
+			{
+				name: '创建群聊会话',
+				value: 'create',
+				description: '创建一个新的群聊会话',
+			},
+			[
+				{
+					displayName: '群聊名',
+					name: 'name',
+					default: '',
+					description: '群聊名，最多50个utf8字符，超过将截断',
+					type: 'string',
+				},
+				{
+					displayName: '群主ID',
+					name: 'owner',
+					default: '',
+					description: '指定群主的ID。如果不指定，系统会随机从userlist中选一人作为群主',
+					type: 'string',
+				},
+				{
+					displayName: '*群成员ID列表',
+					name: 'userlist',
+					default: '',
+					description: '群成员ID列表。至少2人，至多2000人',
+					type: 'string',
+					required: true,
+				},
+				{
+					displayName: '群聊唯一标志',
+					name: 'chatid',
+					default: '',
+					description:
+						'群聊的唯一标志，不能与已有的群重复；字符串类型，最长32个字符。只允许字符0-9及字母a-zA-Z。如果不填，系统会随机生成群ID',
+					type: 'string',
+				},
+			],
+			this.call,
+		);
+	}
+
+	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
+		const name = this.getNodeParameter('name', index, '') as string;
+		const owner = this.getNodeParameter('owner', index, '') as string;
+		const userlist = this.getNodeParameter('userlist', index) as string;
+		const chatid = this.getNodeParameter('chatid', index, '') as string;
+
+		const data: IDataObject = {
+			name,
+			owner,
+			userlist: userlist.split(','),
+			chatid,
+		};
+
+		return WechatWorkRequestUtils.request.call(this, {
+			method: 'POST',
+			url: `/cgi-bin/appchat/create`,
+			body: data,
+		});
+	}
+}
+
+export default GroupChatCreateOperate;
