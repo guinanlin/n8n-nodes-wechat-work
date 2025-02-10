@@ -93,13 +93,14 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 	): Promise<IHttpRequestOptions> {
 		requestOptions.baseURL = `https://${credentials.baseUrl}`;
 		requestOptions.qs = {
+			...(requestOptions.qs || {}),
 			access_token: credentials.accessToken,
 		};
 		// requestOptions.proxy = {
 		// 	host: '127.0.0.1',
 		// 	port: 8000,
-		// 	protocol: 'http'
-		// }
+		// 	protocol: 'http',
+		// };
 		// requestOptions.skipSslCertificateValidation = true;
 
 		return requestOptions;

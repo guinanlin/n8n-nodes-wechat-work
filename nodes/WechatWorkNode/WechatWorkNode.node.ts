@@ -12,7 +12,7 @@ import ResourceBuilder from "../help/builder/resourceBuilder";
 import ModuleLoadUtils from "../help/utils/moduleLoadUtils";
 
 const resourceBuilder = new ResourceBuilder();
-const resources = ModuleLoadUtils.loadModules(__dirname, "resource/*.ts");
+const resources = ModuleLoadUtils.loadModules(__dirname, "resource/*.js");
 resources.forEach((resource) => {
 	resource.init(resourceBuilder);
 });

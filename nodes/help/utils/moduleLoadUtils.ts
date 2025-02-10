@@ -1,24 +1,19 @@
-import { globSync } from 'glob'
-import * as path from 'path';
+// @ts-ignore
+import requireGlob from "require-glob";
 
-class ModuleLoadUtils{
-
-	static loadModules(dirPath: string, expression: string){
-		const list = globSync(expression, {
-			cwd: dirPath
-		})
+class ModuleLoadUtils {
+	static loadModules(dirPath: string, expression: string) {
+		const list = requireGlob.sync(expression, {
+			cwd: dirPath,
+		});
 
 		const modules = [];
-		for (const modulePath of list) {
-			let fullPath = path.join(dirPath, modulePath);
-			fullPath = './' + path.relative(__dirname, fullPath).replace(/\\/g, '/');
-			fullPath = fullPath.replace('.d.ts', '.js')
-			modules.push(require(fullPath).default)
+		for (const module of Object.values(list)) {
+			// @ts-ignore
+			modules.push(module.default);
 		}
-
 		return modules;
 	}
-
 }
 
 export default ModuleLoadUtils;
