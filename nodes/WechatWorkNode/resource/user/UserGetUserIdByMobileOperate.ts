@@ -8,7 +8,7 @@ class UserGetUserIdByMobileOperate {
 			'user',
 			{
 				name: '通过手机号获取用户ID',
-				value: 'getUserIdByMobile',
+				value: 'user:getUserIdByMobile',
 				description: '通过手机号获取其所对应的用户ID',
 			},
 			[

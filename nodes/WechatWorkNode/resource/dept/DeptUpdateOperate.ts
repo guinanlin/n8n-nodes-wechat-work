@@ -8,7 +8,7 @@ class DeptUpdateOperate {
       'dept',
       {
         name: '更新部门',
-        value: 'updateDept',
+        value: 'dept:updateDept',
         description: '更新一个部门的信息',
       },
       [

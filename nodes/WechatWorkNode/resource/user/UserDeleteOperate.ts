@@ -1,23 +1,23 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
+import WechatWorkRequestUtils from "../../../help/utils/wechatWorkRequestUtils";
 
-class UserConvertToOpenIdOperate {
+class UserDeleteOperate {
 	static init(resourceBuilder: ResourceBuilder) {
 		resourceBuilder.addOperate(
 			'user',
 			{
-				name: 'userid转openid',
-				value: 'user:convertToOpenId',
-				description: '将企业微信的userid转成openid',
+				name: '删除成员',
+				value: 'user:delete',
+				description: '删除企业微信成员',
 			},
 			[
 				{
-					displayName: '*用户ID',
+					displayName: '*成员UserID',
 					name: 'userid',
-					default: '',
-					description: '企业内的成员ID',
 					type: 'string',
+					default: '',
+					description: '对应管理端的账号',
 					required: true,
 				},
 			],
@@ -28,14 +28,16 @@ class UserConvertToOpenIdOperate {
 	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const userid = this.getNodeParameter('userid', index) as string;
 
+		const queryParameters = {
+			userid,
+		};
+
 		return WechatWorkRequestUtils.request.call(this, {
-			method: 'POST',
-			url: `/cgi-bin/user/convert_to_openid`,
-			body: {
-				userid,
-			},
+			method: 'GET',
+			url: `/cgi-bin/user/delete`,
+			qs: queryParameters,
 		});
 	}
 }
 
-export default UserConvertToOpenIdOperate;
+export default UserDeleteOperate;

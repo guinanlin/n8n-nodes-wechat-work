@@ -8,7 +8,7 @@ class MediaUploadOperate {
       'media',
       {
         name: '上传临时素材',
-        value: 'uploadMedia',
+        value: 'media:upload',
         description: '上传临时素材，media_id仅三天内有效',
       },
       [

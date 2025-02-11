@@ -8,7 +8,7 @@ class UserGetUserIdByEmailOperate {
 			'user',
 			{
 				name: '通过邮箱获取用户ID',
-				value: 'getUserIdByEmail',
+				value: 'user:getUserIdByEmail',
 				description: '通过邮箱获取其所对应的用户ID',
 			},
 			[

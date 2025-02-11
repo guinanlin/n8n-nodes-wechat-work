@@ -9,7 +9,7 @@ class MessageSendOperate {
 			'message',
 			{
 				name: '发送应用消息',
-				value: 'send',
+				value: 'message:send',
 				description: '应用支持推送文本、图片、视频、文件、图文等类型。',
 			},
 			[
@@ -537,14 +537,20 @@ class MessageSendOperate {
 			// @ts-ignore
 			data.textcard = this.getNodeParameter('textcard', index) as object;
 		} else if (msgtype === 'news') {
+			const articles = (this.getNodeParameter('articles', index) as IDataObject)
+				.data as IDataObject[] || [];
+
 			// @ts-ignore
 			data.news = {
-				articles: this.getNodeParameter('articles', index) as [],
+				articles: articles,
 			};
 		} else if (msgtype === 'mpnews') {
+			const articles = (this.getNodeParameter('articles', index) as IDataObject)
+				.data as IDataObject[] || [];
+
 			// @ts-ignore
 			data.mpnews = {
-				articles: this.getNodeParameter('articles', index) as [],
+				articles: articles,
 			};
 		} else if (msgtype === 'markdown') {
 			// @ts-ignore

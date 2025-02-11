@@ -8,7 +8,7 @@ class GroupChatCreateOperate {
 			'appGroupChat',
 			{
 				name: '创建群聊会话',
-				value: 'create',
+				value: 'appGroupChat:create',
 				description: '创建一个新的群聊会话',
 			},
 			[

@@ -8,7 +8,7 @@ class DeptGetSubDeptOperate {
 			'dept',
 			{
 				name: '获取子部门ID列表',
-				value: 'getSubDept',
+				value: 'dept:getSubDept',
 				description: '获取指定部门及其下的子部门ID列表',
 			},
 			[

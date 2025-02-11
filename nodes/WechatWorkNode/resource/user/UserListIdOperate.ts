@@ -8,7 +8,7 @@ class UserListIdOperate {
 			'user',
 			{
 				name: '获取成员ID列表',
-				value: 'listId',
+				value: 'user:listId',
 				description: '获取企业成员的userid与对应的部门ID列表',
 			},
 			[

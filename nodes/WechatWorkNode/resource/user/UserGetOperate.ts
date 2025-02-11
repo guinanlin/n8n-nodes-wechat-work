@@ -8,7 +8,7 @@ class UserGetOperate {
 			'user',
 			{
 				name: '读取成员',
-				value: 'get',
+				value: 'user:get',
 				description: '获取企业成员的详细信息',
 			},
 			[

@@ -8,7 +8,7 @@ class GroupChatSendOperate {
 			'appGroupChat',
 			{
 				name: '发送群聊消息',
-				value: 'send',
+				value: 'appGroupChat:send',
 				description: '发送消息到群聊',
 			},
 			[

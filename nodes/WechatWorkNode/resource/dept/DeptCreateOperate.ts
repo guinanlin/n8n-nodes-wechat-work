@@ -8,7 +8,7 @@ class DeptCreateOperate {
       'dept',
       {
         name: '创建部门',
-        value: 'createDept',
+        value: 'dept:createDept',
         description: '创建一个新的部门',
       },
       [

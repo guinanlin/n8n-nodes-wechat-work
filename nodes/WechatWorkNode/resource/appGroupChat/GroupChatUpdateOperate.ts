@@ -8,7 +8,7 @@ class GroupChatUpdateOperate {
 			'appGroupChat',
 			{
 				name: '修改群聊会话',
-				value: 'update',
+				value: 'appGroupChat:update',
 				description: '修改一个已有的群聊会话',
 			},
 			[

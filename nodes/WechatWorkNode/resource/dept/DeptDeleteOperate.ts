@@ -8,7 +8,7 @@ class DeptDeleteOperate {
       'dept',
       {
         name: '删除部门',
-        value: 'deleteDept',
+        value: 'dept:deleteDept',
         description: '删除一个部门',
       },
       [

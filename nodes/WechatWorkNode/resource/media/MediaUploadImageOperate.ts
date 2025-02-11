@@ -8,7 +8,7 @@ class MediaUploadImageOperate {
 			'media',
 			{
 				name: '上传图片',
-				value: 'uploadImage',
+				value: 'media:uploadImage',
 				description: '上传图片得到图片URL，该URL永久有效',
 			},
 			[

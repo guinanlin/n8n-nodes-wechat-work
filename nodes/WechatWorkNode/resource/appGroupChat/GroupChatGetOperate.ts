@@ -8,7 +8,7 @@ class GroupChatGetOperate {
 			'appGroupChat',
 			{
 				name: '获取群聊会话',
-				value: 'get',
+				value: 'appGroupChat:get',
 				description: '获取一个已有的群聊会话',
 			},
 			[

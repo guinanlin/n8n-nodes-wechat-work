@@ -8,7 +8,7 @@ class MessageUpdateTemplateCardOperate{
 			'message',
 			{
 				name: '更新模版卡片消息',
-				value: 'update_template_card',
+				value: 'message:update_template_card',
 				description: '参考文档: https://developer.work.weixin.qq.com/document/path/94888'
 			},
 			[

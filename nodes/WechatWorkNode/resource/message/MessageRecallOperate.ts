@@ -8,7 +8,7 @@ class MessageRecallOperate {
 			'message',
 			{
 				name: '撤回消息',
-				value: 'recall',
+				value: 'message:recall',
 				description: '撤回24小时内通过发送应用消息接口推送的消息',
 			},
 			[

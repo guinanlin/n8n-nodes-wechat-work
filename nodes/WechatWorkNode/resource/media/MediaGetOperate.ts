@@ -8,7 +8,7 @@ class MediaGetOperate {
       'media',
       {
         name: '获取临时素材',
-        value: 'getMedia',
+        value: 'media:get',
       },
       [
         {
