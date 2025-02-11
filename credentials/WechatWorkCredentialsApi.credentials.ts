@@ -20,6 +20,7 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 		},
 		{
 			displayName: 'Corpid',
+			description: '企业ID，参考：https://developer.work.weixin.qq.com/document/path/90665#corpid',
 			name: 'corpid',
 			type: 'string',
 			default: '',
@@ -27,6 +28,7 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 		{
 			displayName: 'Corpsecret',
 			name: 'corpsecret',
+			description: '应用的凭证密钥，参考：https://developer.work.weixin.qq.com/document/path/91039#14953/secret',
 			type: 'string',
 			typeOptions: {
 				password: true,
