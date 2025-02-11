@@ -1,31 +1,22 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
-import ResourceBuilder from '../../../help/builder/ResourceBuilder';
+import { ResourceOperations } from '../../../help/type/IResource';
 
-class UserGetUserIdByMobileOperate {
-	static init(resourceBuilder: ResourceBuilder) {
-		resourceBuilder.addOperate(
-			'user',
-			{
-				name: '通过手机号获取用户ID',
-				value: 'user:getUserIdByMobile',
-				description: '通过手机号获取其所对应的用户ID',
-			},
-			[
-				{
-					displayName: '*手机号',
-					name: 'mobile',
-					default: '',
-					description: '用户在企业微信通讯录中的手机号码',
-					type: 'string',
-					required: true,
-				},
-			],
-			this.call,
-		);
-	}
-
-	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
+const UserGetUserIdByMobileOperate: ResourceOperations = {
+	name: '通过手机号获取用户ID',
+	value: 'user:getUserIdByMobile',
+	description: '通过手机号获取其所对应的用户ID',
+	options: [
+		{
+			displayName: '*手机号',
+			name: 'mobile',
+			default: '',
+			description: '用户在企业微信通讯录中的手机号码',
+			type: 'string',
+			required: true,
+		},
+	],
+	async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const mobile = this.getNodeParameter('mobile', index) as string;
 
 		return WechatWorkRequestUtils.request.call(this, {
@@ -35,7 +26,7 @@ class UserGetUserIdByMobileOperate {
 				mobile,
 			},
 		});
-	}
-}
+	},
+};
 
 export default UserGetUserIdByMobileOperate;

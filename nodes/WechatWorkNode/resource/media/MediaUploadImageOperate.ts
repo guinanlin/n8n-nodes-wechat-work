@@ -1,34 +1,25 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
-import ResourceBuilder from '../../../help/builder/ResourceBuilder';
+import { ResourceOperations } from '../../../help/type/IResource';
 
-class MediaUploadImageOperate {
-	static init(resourceBuilder: ResourceBuilder) {
-		resourceBuilder.addOperate(
-			'media',
-			{
-				name: '上传图片',
-				value: 'media:uploadImage',
-				description: '上传图片得到图片URL，该URL永久有效',
-			},
-			[
-				{
-					displayName: '文件',
-					name: 'inputDataFieldName',
-					type: 'string',
-					placeholder: 'e.g. data',
-					default: 'data',
-					hint: '包含用于更新文件的二进制文件数据的输入字段的名称',
-					description:
-						'在左侧输入面板的二进制选项卡中，找到包含二进制数据的输入字段的名称，以更新文件',
-					required: true,
-				},
-			],
-			this.call,
-		);
-	}
-
-	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
+const MediaUploadImageOperate: ResourceOperations = {
+	name: '上传图片',
+	value: 'media:uploadImage',
+	description: '上传图片得到图片URL，该URL永久有效',
+	options: [
+		{
+			displayName: '文件',
+			name: 'inputDataFieldName',
+			type: 'string',
+			placeholder: 'e.g. data',
+			default: 'data',
+			hint: '包含用于更新文件的二进制文件数据的输入字段的名称',
+			description:
+				'在左侧输入面板的二进制选项卡中，找到包含二进制数据的输入字段的名称，以更新文件',
+			required: true,
+		},
+	],
+	async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const inputDataFieldName = this.getNodeParameter('inputDataFieldName', index) as string;
 
 		const binaryData = this.helpers.assertBinaryData(index, inputDataFieldName);
@@ -52,7 +43,7 @@ class MediaUploadImageOperate {
 				},
 			},
 		});
-	}
-}
+	},
+};
 
 export default MediaUploadImageOperate;

@@ -1,43 +1,32 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import ResourceBuilder from '../../../help/builder/ResourceBuilder';
-import WechatWorkRequestUtils from "../../../help/utils/WechatWorkRequestUtils";
+import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
+import { ResourceOperations } from '../../../help/type/IResource';
 
-class UserDeleteOperate {
-	static init(resourceBuilder: ResourceBuilder) {
-		resourceBuilder.addOperate(
-			'user',
-			{
-				name: '删除成员',
-				value: 'user:delete',
-				description: '删除企业微信成员',
-			},
-			[
-				{
-					displayName: '*成员UserID',
-					name: 'userid',
-					type: 'string',
-					default: '',
-					description: '对应管理端的账号',
-					required: true,
-				},
-			],
-			this.call,
-		);
-	}
-
-	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
+const UserDeleteOperate: ResourceOperations = {
+	name: '删除成员',
+	value: 'user:delete',
+	description: '删除企业微信成员',
+	options: [
+		{
+			displayName: '*成员UserID',
+			name: 'userid',
+			type: 'string',
+			default: '',
+			description: '对应管理端的账号',
+			required: true,
+		},
+	],
+	async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const userid = this.getNodeParameter('userid', index) as string;
-
-		const queryParameters = {
-			userid,
-		};
 
 		return WechatWorkRequestUtils.request.call(this, {
 			method: 'GET',
 			url: `/cgi-bin/user/delete`,
-			qs: queryParameters,
+			qs: {
+				userid,
+			},
 		});
-	}
-}
+	},
+};
 
 export default UserDeleteOperate;

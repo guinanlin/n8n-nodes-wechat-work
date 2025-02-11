@@ -1,20 +1,8 @@
-import ResourceBuilder from '../../help/builder/ResourceBuilder';
-import MessageUpdateTemplateCardOperate from "./message/MessageUpdateTemplateCardOperate";
-import MessageRecallOperate from "./message/MessageRecallOperate";
-import MessageSendOperate from "./message/MessageSendOperate";
+import { INodePropertyOptions } from 'n8n-workflow/dist/Interfaces';
 
-class MessageResource {
-	static init(resourceBuilder: ResourceBuilder) {
-		resourceBuilder.addResource({
-			name: '消息推送',
-			value: 'message',
-		});
-
-		const modules = [MessageRecallOperate, MessageSendOperate, MessageUpdateTemplateCardOperate];
-		for (const module of modules) {
-			module.init(resourceBuilder);
-		}
-	}
-}
+const MessageResource: INodePropertyOptions = {
+	name: '消息推送',
+	value: 'message',
+};
 
 export default MessageResource;

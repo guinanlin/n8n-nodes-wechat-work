@@ -1,31 +1,22 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
-import ResourceBuilder from '../../../help/builder/ResourceBuilder';
+import { ResourceOperations } from '../../../help/type/IResource';
 
-class UserConvertToOpenIdOperate {
-	static init(resourceBuilder: ResourceBuilder) {
-		resourceBuilder.addOperate(
-			'user',
-			{
-				name: 'userid转openid',
-				value: 'user:convertToOpenId',
-				description: '将企业微信的userid转成openid',
-			},
-			[
-				{
-					displayName: '*用户ID',
-					name: 'userid',
-					default: '',
-					description: '企业内的成员ID',
-					type: 'string',
-					required: true,
-				},
-			],
-			this.call,
-		);
-	}
-
-	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
+const UserConvertToOpenIdOperate: ResourceOperations = {
+	name: 'Userid转openid',
+	value: 'user:convertToOpenId',
+	description: '将企业微信的userid转成openid',
+	options: [
+		{
+			displayName: '*用户ID',
+			name: 'userid',
+			default: '',
+			description: '企业内的成员ID',
+			type: 'string',
+			required: true,
+		},
+	],
+	async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const userid = this.getNodeParameter('userid', index) as string;
 
 		return WechatWorkRequestUtils.request.call(this, {
@@ -35,7 +26,7 @@ class UserConvertToOpenIdOperate {
 				userid,
 			},
 		});
-	}
-}
+	},
+};
 
 export default UserConvertToOpenIdOperate;

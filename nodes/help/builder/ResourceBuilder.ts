@@ -1,6 +1,6 @@
 import { INodePropertyOptions } from 'n8n-workflow/dist/Interfaces';
 import { IResource, ResourceOperations } from '../type/IResource';
-import { IDataObject, type IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import { INodeProperties } from 'n8n-workflow';
 
 class ResourceBuilder {
 	resources: IResource[] = [];
@@ -12,19 +12,10 @@ class ResourceBuilder {
 		});
 	}
 
-	addOperate(
-		resourceName: string,
-		operate: INodePropertyOptions,
-		options: INodeProperties[],
-		call: (this: IExecuteFunctions, index: number) => Promise<IDataObject>,
-	) {
+	addOperate(resourceName: string, operate: ResourceOperations) {
 		const resource = this.resources.find((resource) => resource.value === resourceName);
 		if (resource) {
-			resource.operations.push({
-				...operate,
-				options,
-				call,
-			} as ResourceOperations);
+			resource.operations.push(operate);
 		}
 	}
 

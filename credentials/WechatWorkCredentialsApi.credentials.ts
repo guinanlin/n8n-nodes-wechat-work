@@ -10,6 +10,8 @@ import { IHttpRequestOptions } from 'n8n-workflow/dist/Interfaces';
 export class WechatWorkCredentialsApi implements ICredentialType {
 	name = 'wechatWorkCredentialsApi';
 	displayName = 'Wechat Work Credentials API';
+	// @ts-ignore
+	icon = 'file:icon.png';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Base URL',
