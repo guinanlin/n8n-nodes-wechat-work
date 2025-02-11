@@ -1,5 +1,7 @@
 import ResourceBuilder from '../../help/builder/resourceBuilder';
-import ModuleLoadUtils from '../../help/utils/moduleLoadUtils';
+import MessageUpdateTemplateCardOperate from "./message/MessageUpdateTemplateCardOperate";
+import MessageRecallOperate from "./message/MessageRecallOperate";
+import MessageSendOperate from "./message/MessageSendOperate";
 
 class MessageResource {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -8,7 +10,7 @@ class MessageResource {
 			value: 'message',
 		});
 
-		const modules = ModuleLoadUtils.loadModules(__dirname, 'message/*.js');
+		const modules = [MessageRecallOperate, MessageSendOperate, MessageUpdateTemplateCardOperate];
 		for (const module of modules) {
 			module.init(resourceBuilder);
 		}

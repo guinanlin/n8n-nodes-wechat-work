@@ -1,5 +1,7 @@
 import ResourceBuilder from '../../help/builder/resourceBuilder';
-import ModuleLoadUtils from '../../help/utils/moduleLoadUtils';
+import MediaUploadOperate from "./media/MediaUploadOperate";
+import MediaGetOperate from "./media/MediaGetOperate";
+import MediaUploadImageOperate from "./media/MediaUploadImageOperate";
 
 class MediaResource {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -8,7 +10,7 @@ class MediaResource {
 			value: 'media',
 		});
 
-		const modules = ModuleLoadUtils.loadModules(__dirname, 'media/*.js');
+		const modules = [MediaGetOperate, MediaUploadImageOperate, MediaUploadOperate];
 		for (const module of modules) {
 			module.init(resourceBuilder);
 		}

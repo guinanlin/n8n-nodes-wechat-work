@@ -1,6 +1,6 @@
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
 import { IDataObject, IExecuteFunctions, NodeOperationError } from 'n8n-workflow';
-import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
+import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
 
 class MessageSendOperate {
 

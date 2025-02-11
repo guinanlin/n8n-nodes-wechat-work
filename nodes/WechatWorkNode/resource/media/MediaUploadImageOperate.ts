@@ -1,5 +1,5 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
+import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
 
 class MediaUploadImageOperate {

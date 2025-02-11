@@ -1,4 +1,4 @@
-import ModuleLoadUtils from "../nodes/help/utils/moduleLoadUtils";
+import ModuleLoadUtils from "../nodes/help/utils/ModuleLoadUtils";
 import ResourceBuilder from "../nodes/help/builder/resourceBuilder";
 
 const resourceBuilder = new ResourceBuilder();

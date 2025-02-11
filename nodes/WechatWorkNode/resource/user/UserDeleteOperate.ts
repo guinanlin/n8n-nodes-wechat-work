@@ -1,6 +1,6 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
-import WechatWorkRequestUtils from "../../../help/utils/wechatWorkRequestUtils";
+import WechatWorkRequestUtils from "../../../help/utils/WechatWorkRequestUtils";
 
 class UserDeleteOperate {
 	static init(resourceBuilder: ResourceBuilder) {

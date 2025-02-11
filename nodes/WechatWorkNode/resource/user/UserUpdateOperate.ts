@@ -1,9 +1,9 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
-import WechatWorkRequestUtils from "../../../help/utils/wechatWorkRequestUtils";
-import NodeUtils from "../../../help/utils/nodeUtils";
+import WechatWorkRequestUtils from "../../../help/utils/WechatWorkRequestUtils";
+import NodeUtils from "../../../help/utils/NodeUtils";
 
-class UserCreateOperate {
+class UserUpdateOperate {
 	static init(resourceBuilder: ResourceBuilder) {
 		resourceBuilder.addOperate(
 			'user',
@@ -273,4 +273,4 @@ class UserCreateOperate {
 	}
 }
 
-export default UserCreateOperate;
+export default UserUpdateOperate;

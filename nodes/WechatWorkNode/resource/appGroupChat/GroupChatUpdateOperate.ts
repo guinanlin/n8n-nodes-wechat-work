@@ -1,7 +1,7 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
+import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
-import NodeUtils from "../../../help/utils/nodeUtils";
+import NodeUtils from "../../../help/utils/NodeUtils";
 
 class GroupChatUpdateOperate {
 	static init(resourceBuilder: ResourceBuilder) {

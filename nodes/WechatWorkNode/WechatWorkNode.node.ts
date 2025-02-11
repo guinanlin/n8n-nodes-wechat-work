@@ -8,14 +8,19 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 import { ICredentialsDecrypted, ICredentialTestFunctions } from 'n8n-workflow/dist/Interfaces';
-import ResourceBuilder from "../help/builder/resourceBuilder";
-import ModuleLoadUtils from "../help/utils/moduleLoadUtils";
+import ResourceBuilder from '../help/builder/resourceBuilder';
+import UserResource from "./resource/UserResource";
+import DeptResource from "./resource/DeptResource";
+import MessageResource from "./resource/MessageResource";
+import MediaResource from "./resource/MediaResource";
+import AppGroupChatResource from "./resource/AppGroupChatResource";
 
 const resourceBuilder = new ResourceBuilder();
-const resources = ModuleLoadUtils.loadModules(__dirname, "resource/*.js");
-resources.forEach((resource) => {
-	resource.init(resourceBuilder);
-});
+UserResource.init(resourceBuilder);
+DeptResource.init(resourceBuilder);
+MediaResource.init(resourceBuilder);
+MessageResource.init(resourceBuilder);
+AppGroupChatResource.init(resourceBuilder);
 
 export class WechatWorkNode implements INodeType {
 	description: INodeTypeDescription = {

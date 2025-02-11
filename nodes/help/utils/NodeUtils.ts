@@ -3,7 +3,7 @@ import { IDataObject } from 'n8n-workflow';
 class NodeUtils {
 
 	static getNodeFixedCollection(data: IDataObject, collectionName: string): IDataObject[] {
-		return data[collectionName] as IDataObject[];
+		return data[collectionName] as IDataObject[] || [];
 	}
 
 	static getNodeFixedCollectionList(data: IDataObject, collectionName: string, propertyName: string): any[] {

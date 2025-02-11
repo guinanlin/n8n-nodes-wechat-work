@@ -1,5 +1,8 @@
 import ResourceBuilder from '../../help/builder/resourceBuilder';
-import ModuleLoadUtils from '../../help/utils/moduleLoadUtils';
+import DeptGetSubDeptOperate from './dept/DeptGetSubDeptOperate';
+import DeptCreateOperate from './dept/DeptCreateOperate';
+import DeptDeleteOperate from './dept/DeptDeleteOperate';
+import DeptUpdateOperate from './dept/DeptUpdateOperate';
 
 class DeptResource {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -8,7 +11,12 @@ class DeptResource {
 			value: 'dept',
 		});
 
-		const modules = ModuleLoadUtils.loadModules(__dirname, 'dept/*.js');
+		const modules = [
+			DeptCreateOperate,
+			DeptDeleteOperate,
+			DeptGetSubDeptOperate,
+			DeptUpdateOperate,
+		];
 		for (const module of modules) {
 			module.init(resourceBuilder);
 		}

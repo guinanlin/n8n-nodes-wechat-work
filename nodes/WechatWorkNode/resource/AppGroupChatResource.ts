@@ -1,5 +1,8 @@
 import ResourceBuilder from '../../help/builder/resourceBuilder';
-import ModuleLoadUtils from '../../help/utils/moduleLoadUtils';
+import GroupChatCreateOperate from "./appGroupChat/GroupChatCreateOperate";
+import GroupChatUpdateOperate from "./appGroupChat/GroupChatUpdateOperate";
+import GroupChatGetOperate from "./appGroupChat/GroupChatGetOperate";
+import GroupChatSendOperate from "./appGroupChat/GroupChatSendOperate";
 
 class AppGroupChatResource {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -8,7 +11,12 @@ class AppGroupChatResource {
 			value: 'appGroupChat',
 		});
 
-		const modules = ModuleLoadUtils.loadModules(__dirname, 'appGroupChat/*.js');
+		const modules = [
+			GroupChatCreateOperate,
+			GroupChatGetOperate,
+			GroupChatSendOperate,
+			GroupChatUpdateOperate
+		]
 		for (const module of modules) {
 			module.init(resourceBuilder);
 		}
