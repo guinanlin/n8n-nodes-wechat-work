@@ -1,6 +1,7 @@
 import ResourceBuilder from "../../../help/builder/resourceBuilder";
 import {IDataObject, IExecuteFunctions} from "n8n-workflow";
 import WechatWorkRequestUtils from "../../../help/utils/wechatWorkRequestUtils";
+import NodeUtils from "../../../help/utils/nodeUtils";
 
 class MessageUpdateTemplateCardOperate{
 	static init(resourceBuilder: ResourceBuilder) {
@@ -23,23 +24,77 @@ class MessageUpdateTemplateCardOperate{
 				{
 					displayName: '企业的成员ID列表',
 					name: 'userids',
-					default: '',
 					description: '企业的成员ID列表（最多支持1000个）',
-					type: 'string',
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '成员列表',
+							values: [
+								{
+									displayName: '成员UserID',
+									name: 'id',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
 				},
 				{
 					displayName: '企业的部门ID列表',
 					name: 'partyids',
-					default: '',
 					description: '企业的部门ID列表（最多支持100个）',
-					type: 'string',
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '列表',
+							values: [
+								{
+									displayName: '部门ID',
+									name: 'id',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
 				},
 				{
 					displayName: '企业的标签ID列表',
 					name: 'tagids',
-					default: '',
 					description: '企业的标签ID列表（最多支持100个）',
-					type: 'string',
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '列表',
+							values: [
+								{
+									displayName: '标签ID',
+									name: 'id',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
 				},
 				{
 					displayName: '更新整个任务接收人员',
@@ -73,9 +128,10 @@ class MessageUpdateTemplateCardOperate{
 		const response_code = this.getNodeParameter('response_code', index) as string;
 		const buttonReplaceName = this.getNodeParameter('button.replace_name', index) as string;
 
-		const userids = this.getNodeParameter('userids', index, '') as string;
-		const partyids = this.getNodeParameter('partyids', index, '') as string;
-		const tagids = this.getNodeParameter('tagids', index, '') as string;
+
+		const userids = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('userids', index) as IDataObject, 'values', 'id');
+		const partyids = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('partyids', index) as IDataObject, 'values', 'id');
+		const tagids = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('tagids', index) as IDataObject, 'values', 'id');
 		const atall = this.getNodeParameter('atall', index, false) as boolean;
 
 		const data: IDataObject = {

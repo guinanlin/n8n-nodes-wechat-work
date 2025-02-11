@@ -1,6 +1,7 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
+import NodeUtils from "../../../help/utils/nodeUtils";
 
 class GroupChatUpdateOperate {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -36,14 +37,50 @@ class GroupChatUpdateOperate {
 				{
 					displayName: '添加成员的ID列表',
 					name: 'add_user_list',
-					default: '',
-					type: 'string',
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '成员列表',
+							values: [
+								{
+									displayName: '成员UserID',
+									name: 'userid',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
 				},
 				{
 					displayName: '踢出成员的ID列表',
 					name: 'del_user_list',
-					default: '',
-					type: 'string',
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '成员列表',
+							values: [
+								{
+									displayName: '成员UserID',
+									name: 'userid',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
 				},
 			],
 			this.call,
@@ -54,8 +91,9 @@ class GroupChatUpdateOperate {
 		const chatid = this.getNodeParameter('chatid', index) as string;
 		const name = this.getNodeParameter('name', index, '') as string;
 		const owner = this.getNodeParameter('owner', index, '') as string;
-		const addUserList = this.getNodeParameter('add_user_list', index, '') as string;
-		const delUserList = this.getNodeParameter('del_user_list', index, '') as string;
+
+		const addUserList = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('add_user_list', index) as IDataObject, 'values', 'userid');
+		const delUserList = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('del_user_list', index) as IDataObject, 'values', 'userid');
 
 		const data: IDataObject = {
 			chatid,
@@ -68,10 +106,10 @@ class GroupChatUpdateOperate {
 			data.owner = owner;
 		}
 		if (addUserList) {
-			data.add_user_list = addUserList.split(',');
+			data.add_user_list = addUserList;
 		}
 		if (delUserList) {
-			data.del_user_list = delUserList.split(',');
+			data.del_user_list = delUserList;
 		}
 
 		return WechatWorkRequestUtils.request.call(this, {

@@ -1,6 +1,7 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
 import WechatWorkRequestUtils from '../../../help/utils/wechatWorkRequestUtils';
+import NodeUtils from "../../../help/utils/nodeUtils";
 
 class GroupChatCreateOperate {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -12,6 +13,32 @@ class GroupChatCreateOperate {
 				description: '创建一个新的群聊会话',
 			},
 			[
+				{
+					displayName: '*群成员ID列表',
+					name: 'userlist',
+					description: '群成员ID列表。至少2人，至多2000人',
+					required: true,
+					type: 'fixedCollection',
+					default: [],
+					typeOptions: {
+						multipleValues: true,
+					},
+					options: [
+						{
+							name: 'values',
+							displayName: '成员列表',
+							values: [
+								{
+									displayName: '成员UserID',
+									name: 'userid',
+									type: 'string',
+									default: '',
+									required: true,
+								},
+							],
+						},
+					],
+				},
 				{
 					displayName: '群聊名',
 					name: 'name',
@@ -25,14 +52,6 @@ class GroupChatCreateOperate {
 					default: '',
 					description: '指定群主的ID。如果不指定，系统会随机从userlist中选一人作为群主',
 					type: 'string',
-				},
-				{
-					displayName: '*群成员ID列表',
-					name: 'userlist',
-					default: '',
-					description: '群成员ID列表。至少2人，至多2000人',
-					type: 'string',
-					required: true,
 				},
 				{
 					displayName: '群聊唯一标志',
@@ -50,13 +69,14 @@ class GroupChatCreateOperate {
 	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const name = this.getNodeParameter('name', index, '') as string;
 		const owner = this.getNodeParameter('owner', index, '') as string;
-		const userlist = this.getNodeParameter('userlist', index) as string;
 		const chatid = this.getNodeParameter('chatid', index, '') as string;
+
+		const userlist = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('userlist', index) as IDataObject, 'values', 'userid');
 
 		const data: IDataObject = {
 			name,
 			owner,
-			userlist: userlist.split(','),
+			userlist,
 			chatid,
 		};
 

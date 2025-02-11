@@ -1,6 +1,7 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
 import ResourceBuilder from '../../../help/builder/resourceBuilder';
 import WechatWorkRequestUtils from "../../../help/utils/wechatWorkRequestUtils";
+import NodeUtils from "../../../help/utils/nodeUtils";
 
 class UserCreateOperate {
 	static init(resourceBuilder: ResourceBuilder) {
@@ -136,8 +137,9 @@ class UserCreateOperate {
 								{
 									displayName: '直属上级UserID',
 									name: 'direct_leader',
-									type: 'number',
-									default: 0,
+									type: 'string',
+									default: '',
+									required: true,
 								},
 							],
 						},
@@ -190,8 +192,8 @@ class UserCreateOperate {
 		const departments = (this.getNodeParameter('department', index) as IDataObject)
 			.values as IDataObject[] || [];
 
-		const directLeaders = (this.getNodeParameter('direct_leader', index) as IDataObject)
-			.values as IDataObject[]  || [];
+		const directLeaders = NodeUtils.getNodeFixedCollectionList(this.getNodeParameter('direct_leader', index) as IDataObject, 'values', 'direct_leader');
+
 
 		const json = this.getNodeParameter('json', index) as IDataObject || {};
 
@@ -206,9 +208,7 @@ class UserCreateOperate {
 			is_leader_in_dept: departments.map((department) => {
 				return department.is_leader_in_dept;
 			}),
-			direct_leader: directLeaders.map((directLeader) => {
-				return directLeader.direct_leader;
-			}),
+			direct_leader: directLeaders,
 			enable: this.getNodeParameter('enable', index) ? 1 : 0,
 			main_department: this.getNodeParameter('main_department', index) ? 1 : 0,
 			to_invite: this.getNodeParameter('to_invite', index),
