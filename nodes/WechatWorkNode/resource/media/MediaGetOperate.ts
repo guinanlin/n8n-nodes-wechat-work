@@ -5,7 +5,6 @@ import { ResourceOperations } from '../../../help/type/IResource';
 const MediaGetOperate: ResourceOperations = {
 	name: '获取临时素材',
 	value: 'media:get',
-	description: '获取临时素材',
 	options: [
 		{
 			displayName: '媒体文件ID',

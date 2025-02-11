@@ -20,6 +20,7 @@ const GroupChatSendOperate: ResourceOperations = {
 			name: 'msgtype',
 			default: 'text',
 			type: 'options',
+			// eslint-disable-next-line n8n-nodes-base/node-param-options-type-unsorted-items
 			options: [
 				{ name: '文本消息', value: 'text' },
 				{ name: '图片消息', value: 'image' },
