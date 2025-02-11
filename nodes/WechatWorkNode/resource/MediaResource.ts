@@ -1,4 +1,4 @@
-import ResourceBuilder from '../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../help/builder/ResourceBuilder';
 import MediaUploadOperate from "./media/MediaUploadOperate";
 import MediaGetOperate from "./media/MediaGetOperate";
 import MediaUploadImageOperate from "./media/MediaUploadImageOperate";

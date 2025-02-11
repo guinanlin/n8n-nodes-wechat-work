@@ -1,4 +1,4 @@
-import ResourceBuilder from '../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../help/builder/ResourceBuilder';
 import GroupChatCreateOperate from "./appGroupChat/GroupChatCreateOperate";
 import GroupChatUpdateOperate from "./appGroupChat/GroupChatUpdateOperate";
 import GroupChatGetOperate from "./appGroupChat/GroupChatGetOperate";

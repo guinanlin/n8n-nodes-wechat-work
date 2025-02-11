@@ -1,4 +1,4 @@
-import ResourceBuilder from '../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../help/builder/ResourceBuilder';
 import MessageUpdateTemplateCardOperate from "./message/MessageUpdateTemplateCardOperate";
 import MessageRecallOperate from "./message/MessageRecallOperate";
 import MessageSendOperate from "./message/MessageSendOperate";

@@ -8,7 +8,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 import { ICredentialsDecrypted, ICredentialTestFunctions } from 'n8n-workflow/dist/Interfaces';
-import ResourceBuilder from '../help/builder/resourceBuilder';
+import ResourceBuilder from '../help/builder/ResourceBuilder';
 import UserResource from "./resource/UserResource";
 import DeptResource from "./resource/DeptResource";
 import MessageResource from "./resource/MessageResource";

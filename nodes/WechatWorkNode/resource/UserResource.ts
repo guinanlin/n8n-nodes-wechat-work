@@ -1,4 +1,4 @@
-import ResourceBuilder from '../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../help/builder/ResourceBuilder';
 import UserGetUserIdByEmailOperate from "./user/UserGetUserIdByEmailOperate";
 import UserBatchDeleteOperate from "./user/UserBatchDeleteOperate";
 import UserConvertToOpenIdOperate from "./user/UserConvertToOpenIdOperate";

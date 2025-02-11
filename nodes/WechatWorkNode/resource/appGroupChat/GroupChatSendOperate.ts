@@ -1,6 +1,6 @@
 import { IDataObject, IExecuteFunctions, NodeOperationError } from 'n8n-workflow';
 import WechatWorkRequestUtils from '../../../help/utils/WechatWorkRequestUtils';
-import ResourceBuilder from '../../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../../help/builder/ResourceBuilder';
 
 class GroupChatSendOperate {
 	static init(resourceBuilder: ResourceBuilder) {

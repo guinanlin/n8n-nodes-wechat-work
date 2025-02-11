@@ -1,4 +1,4 @@
-import ResourceBuilder from '../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../help/builder/ResourceBuilder';
 import DeptGetSubDeptOperate from './dept/DeptGetSubDeptOperate';
 import DeptCreateOperate from './dept/DeptCreateOperate';
 import DeptDeleteOperate from './dept/DeptDeleteOperate';

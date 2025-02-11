@@ -1,4 +1,4 @@
-import ResourceBuilder from "../../../help/builder/resourceBuilder";
+import ResourceBuilder from "../../../help/builder/ResourceBuilder";
 import {IDataObject, IExecuteFunctions} from "n8n-workflow";
 import WechatWorkRequestUtils from "../../../help/utils/WechatWorkRequestUtils";
 import NodeUtils from "../../../help/utils/NodeUtils";

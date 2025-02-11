@@ -1,5 +1,5 @@
 import ModuleLoadUtils from "../nodes/help/utils/ModuleLoadUtils";
-import ResourceBuilder from "../nodes/help/builder/resourceBuilder";
+import ResourceBuilder from "../nodes/help/builder/ResourceBuilder";
 
 const resourceBuilder = new ResourceBuilder();
 

@@ -1,5 +1,5 @@
 import { IDataObject, IExecuteFunctions } from 'n8n-workflow';
-import ResourceBuilder from '../../../help/builder/resourceBuilder';
+import ResourceBuilder from '../../../help/builder/ResourceBuilder';
 import WechatWorkRequestUtils from "../../../help/utils/WechatWorkRequestUtils";
 
 class UserDeleteOperate {
