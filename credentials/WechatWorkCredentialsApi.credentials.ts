@@ -54,7 +54,7 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 			// 验证是否正常，正常直接使用即可
 			const res = (await this.helpers.httpRequest({
 				method: 'GET',
-				url: `https://qyapi.weixin.qq.com/cgi-bin/get_api_domain_ip?access_token=${credentials.accessToken}`,
+				url: `https://${credentials.baseUrl}/cgi-bin/get_api_domain_ip?access_token=${credentials.accessToken}`,
 			})) as any;
 
 			console.log('exist accessToken', res);
@@ -105,15 +105,15 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 			baseURL: '=https://{{$credentials.baseUrl}}',
 			url: '/cgi-bin/get_api_domain_ip',
 		},
-		rules: [
-			{
-				type: 'responseSuccessBody',
-				properties: {
-					key: 'errcode',
-					value: 0,
-					message: '凭证验证失败',
-				},
-			},
-		],
+		// rules: [
+		// 	{
+		// 		type: 'responseSuccessBody',
+		// 		properties: {
+		// 			key: 'errcode',
+		// 			value: 0,
+		// 			message: '凭证验证失败',
+		// 		},
+		// 	},
+		// ],
 	};
 }
