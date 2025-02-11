@@ -21,12 +21,11 @@ class UserListIdOperate {
 				},
 				{
 					displayName: '分页大小',
-					name: 'limit',
+					name: 'limita',
 					default: 50,
 					type: 'number',
 					typeOptions: {
 						minValue: 1,
-						// @ts-ignore
 						maxValue: 10000,
 					},
 				},
@@ -37,7 +36,7 @@ class UserListIdOperate {
 
 	static async call(this: IExecuteFunctions, index: number): Promise<IDataObject> {
 		const cursor = this.getNodeParameter('cursor', index, '') as string;
-		const limit = this.getNodeParameter('limit', index, 10000) as number;
+		const limit = this.getNodeParameter('limita', index, 10000) as number;
 
 		return WechatWorkRequestUtils.request.call(this, {
 			method: 'POST',

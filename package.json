@@ -1,19 +1,21 @@
 {
   "name": "n8n-nodes-wechat-work",
   "version": "0.1.0",
-  "description": "",
+  "description": "wechat work node",
   "keywords": [
-    "n8n-community-node-package"
+    "n8n-community-node-package",
+    "wechat-work",
+    "wehcat"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "blowsnow",
+    "email": "im.blowsnow@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/other-blowsnow/n8n-nodes-wechat-work"
   },
   "engines": {
     "node": ">=18.10",

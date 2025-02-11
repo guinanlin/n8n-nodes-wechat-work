@@ -43,7 +43,7 @@ class ResourceBuilder {
 					operations: null,
 				};
 			}),
-			default: this.resources[0].value,
+			default: '',
 		});
 
 		for (const resource of this.resources) {
@@ -64,7 +64,7 @@ class ResourceBuilder {
 						options: null,
 					};
 				}),
-				default: resource.operations[0].value,
+				default: '',
 			});
 
 			for (const operation of resource.operations) {
