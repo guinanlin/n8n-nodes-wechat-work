@@ -75,17 +75,6 @@ export class WechatWorkCredentialsApi implements ICredentialType {
 		return { accessToken: res.access_token };
 	}
 
-	//此凭据当前没有被任何节点直接使用
-	//但是HTTP请求节点可以用它来发出请求。
-	//由于下面的“test”属性，该凭据也是可测试的
-	// authenticate: IAuthenticateGeneric = {
-	// 	type: 'generic',
-	// 	properties: {
-	// 		qs: {
-	// 			access_token: '={{ $credentials.access_token }}',
-	// 		},
-	// 	},
-	// };
 
 	async authenticate(
 		credentials: ICredentialDataDecryptedObject,

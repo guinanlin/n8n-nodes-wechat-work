@@ -21,6 +21,8 @@ export class WechatWorkNode implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Wechat Work Node',
 		name: 'wechatWorkNode',
+		// eslint-disable-next-line n8n-nodes-base/node-class-description-icon-not-svg
+		icon: 'file:icon.png',
 		group: ['transform'],
 		version: 1,
 		description: 'Wechat Work Node',
