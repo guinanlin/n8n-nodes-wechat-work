@@ -1,46 +1,67 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+## Features
+## Apply Group Chat
+- Creating a Group Chat Session
+- Get Group Chat Session
+- Sending Group Chat Messages
+- Modifying a Group Chat Session
+## Department management
+- Creating Departments
+- Deleting Departments
+- Get list of sub-department IDs
+- Updating Departments
+## Media Management
+- Getting Temporary Material
+- Upload Image
+- Upload Temporary Clip
+## Message Push
+- Withdrawing a Message
+- Sending an application message
+- Updating a template card message
+## User Management
+- Batch Delete Members
+- userid to openid
+- Creating Members
+- Delete Member
+- Get QR code for joining company
+- Read members
+- Get userid from e-mail
+- Get user ID by cell phone number
+- Invite members
+- Get member ID list
+- Update members
 
-# n8n-nodes-starter
+# 功能
+## 应用群聊
+- 创建群聊会话
+- 获取群聊会话
+- 发送群聊消息
+- 修改群聊会话
+## 部门管理
+- 创建部门
+- 删除部门
+- 获取子部门ID列表
+- 更新部门
+## 媒体管理
+- 获取临时素材
+- 上传图片
+- 上传临时素材
+## 消息推送
+- 撤回消息
+- 发送应用消息
+- 更新模版卡片消息
+## 用户管理
+- 批量删除成员
+- userid转openid
+- 创建成员
+- 删除成员
+- 获取加入企业二维码
+- 读取成员
+- 通过邮箱获取用户ID
+- 通过手机号获取用户ID
+- 邀请成员
+- 获取成员ID列表
+- 更新成员
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
 
-## Prerequisites
 
-You need the following installed on your development machine:
-
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
-
-## Using this starter
-
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
-
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
-
-## More information
-
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
-
-## License
-
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
