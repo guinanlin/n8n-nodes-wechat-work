@@ -112,8 +112,9 @@ export class WechatWorkNode implements INodeType {
 				// to handle errors.
 				if (this.continueOnFail()) {
 					returnData.push({
-						json: this.getInputData(itemIndex)[0].json,
-						error,
+						json: {
+							error: error.message
+						},
 						pairedItem: itemIndex,
 					});
 				} else {
