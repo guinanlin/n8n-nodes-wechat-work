@@ -9,14 +9,14 @@
   ],
   "license": "MIT",
   "homepage": "https://www.npmjs.com/package/n8n-nodes-dty-work-wechat",
-  "author": [
+  "author": {
+    "name": "goodhawk",
+    "email": "guinan.lin@foxmail.com"
+  },
+  "contributors": [
     {
       "name": "blowsnow",
       "email": "im.blowsnow@gmail.com"
-    },
-    {
-      "name": "goodhawk",
-      "email": "guinan.lin@foxmail.com"
     }
   ],
   "repository": {
