@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-wechat-work",
+  "name": "n8n-nodes-dty-work-wechat",
   "version": "0.2.4",
   "description": "wechat work node",
   "keywords": [
@@ -8,14 +8,23 @@
     "wehcat"
   ],
   "license": "MIT",
-  "homepage": "",
-  "author": {
-    "name": "blowsnow",
-    "email": "im.blowsnow@gmail.com"
-  },
+  "homepage": "https://www.npmjs.com/package/n8n-nodes-dty-work-wechat",
+  "author": [
+    {
+      "name": "blowsnow",
+      "email": "im.blowsnow@gmail.com"
+    },
+    {
+      "name": "goodhawk",
+      "email": "guinan.lin@foxmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/other-blowsnow/n8n-nodes-wechat-work"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "engines": {
     "node": ">=18.10",
@@ -32,7 +41,8 @@
     "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "index.js"
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
@@ -57,6 +67,7 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "form-data": "^4.0.1"
+    "form-data": "^4.0.1",
+    "glob": "^11.0.3"
   }
 }
